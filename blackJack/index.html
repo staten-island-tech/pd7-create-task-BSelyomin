@@ -2,12 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/index.js"></script>
+    <h1>Blackjack Game</h1>
+
+    <div id="dealer-hand">
+      <h2>Dealer Hand</h2>
+      <ul id="dealerCards">
+        <img src="cards/card_rear.png" alt="card1" id="dealer1">
+        <img src="cards/card_rear.png" alt="card2" id="dealer2">
+      </ul>
+      <p>Hand Value: <span id="dealer-value">0</span></p>
+    </div>
+
+    <div id="player-hand">
+      <h2>Player Hand</h2>
+      <ul id="playerCards">
+        <img src="cards/card_rear.png" alt="card1" id="player1">
+        <img src="cards/card_rear.png" alt="card2" id="player2">
+      </ul>
+      <p>Hand Value: <span id="player-value">0</span></p>
+    </div>
+    <div class="bust" hidden>
+      <img id="bust" src="./cards/bust.png" alt="">
+      <button  id="newGame" >New Game</button>
+    </div>
+    
+    <button id="hit-button">Hit</button>
+    <button id="stand-button">Stand</button>
+
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
