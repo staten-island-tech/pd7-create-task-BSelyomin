@@ -67,7 +67,6 @@ function checkGame() {
     playerTotal += hand[i].value;
 
     if (playerTotal > 21) {
-      console.log(ace);
       if (ace) {
         playerTotal -= 10;
         ace = false;
@@ -84,6 +83,9 @@ function checkGame() {
 }
 
 DOM.stand.addEventListener("click", () => {
+  if (bust || stand) {
+    return;
+  }
   checkGame();
   stand = true;
   DOM.dealer1.src = cards[0].src;
