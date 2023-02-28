@@ -58,7 +58,6 @@ function checkGame() {
   if (hand.length === 2 && hand[0].value + hand[1].value === 21) {
     playerTotal = 21.5;
     stand = true;
-    console.log("black jack");
     return;
   }
   ace = hand.some((card) => card.type === "Ace");
@@ -109,7 +108,6 @@ DOM.stand.addEventListener("click", () => {
     dealerTotal = 0;
   }
   DOM.dealer1.src = cards[0].src;
-  console.log(playerTotal, dealerTotal);
   if (dealerTotal < playerTotal) {
     DOM.img.src = "./cards/win.png";
     DOM.bust.removeAttribute("hidden");
