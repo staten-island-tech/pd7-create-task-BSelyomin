@@ -1,13 +1,13 @@
 import "./style.css";
 import cardList from "./cardList";
 
-let cards = cardList[0],
-  cardAmmount = 0,
-  hand = [],
-  bust = false,
-  stand = false,
-  ace = false,
-  playerTotal = 0;
+let cards = cardList[0];
+let cardAmmount = 0;
+let bust = false;
+let stand = false;
+let ace = false;
+let playerTotal = 0;
+let hand = [];
 
 let DOM = {
   dealer1: document.querySelector("#dealer1"),
@@ -24,7 +24,6 @@ let DOM = {
   newGame: document.querySelector("#newGame"),
   img: document.querySelector("#bust"),
 };
-let ogDiv = DOM.dealerCards.innerHTML;
 
 window.onload = () => startGame();
 
@@ -64,18 +63,17 @@ function checkGame() {
   playerTotal = 0;
   for (let i = 0; i <= cardAmmount - 1; i++) {
     playerTotal += hand[i].value;
-
-    if (playerTotal > 21) {
-      if (ace) {
-        playerTotal -= 10;
-        ace = false;
-      } else {
-        DOM.img.src = "./cards/bust.png";
-
-        DOM.bust.removeAttribute("hidden");
-        bust = true;
-        break;
-      }
+    if (playerTotal <= 21) {
+      continue;
+    }
+    if (ace) {
+      playerTotal -= 10;
+      ace = false;
+    } else {
+      DOM.img.src = "./cards/bust.png";
+      DOM.bust.removeAttribute("hidden");
+      bust = true;
+      break;
     }
   }
   DOM.playerValue.innerHTML = playerTotal;
@@ -94,14 +92,14 @@ DOM.stand.addEventListener("click", () => {
   } else {
     dealerTotal = cards[0].value + cards[1].value;
   }
-  let itterator = 51;
+  let iterator = 51;
   while (dealerTotal < 17) {
     DOM.dealerCards.insertAdjacentHTML(
       "beforeend",
-      `<img src="${cards[itterator].src}">`
+      `<img src="${cards[iterator].src}">`
     );
-    dealerTotal += cards[itterator].value;
-    itterator--;
+    dealerTotal += cards[iterator].value;
+    iterator--;
   }
   DOM.dealerValue.innerHTML = dealerTotal;
   if (dealerTotal > 21) {
